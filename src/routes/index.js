@@ -4,14 +4,14 @@ import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 
-import { DefaultLayoutOnly } from '~/components/Layout';
+import { HeaderOnly } from '~/components/Layout';
 
 const publicRouters = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
     { path: '/profile', component: Profile },
     { path: '/search', component: Search, layout: null },
-    { path: '/upload', component: Upload, layout: DefaultLayoutOnly },
+    { path: '/upload', component: Upload, layout: HeaderOnly },
 ];
 
 const privateRoutes = [];
