@@ -10,12 +10,36 @@ import {
     faSpinner,
     faPlus,
     faEllipsisVertical,
+    faEarthAsia,
+    faMoon,
+    faKeyboard,
+    faCircleQuestion,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'Việt Nam',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard and shortcut',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Dark mode',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -62,7 +86,12 @@ function Header() {
                         Upload
                     </Button>
                     <Button outline>Log in</Button>
-                    <FontAwesomeIcon className={cx('menu')} icon={faEllipsisVertical} />
+
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('menu-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </h2>
