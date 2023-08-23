@@ -92,6 +92,30 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
+
+.action {
+    display: flex;
+    align-items: center;
+}
+
+.action-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 1.8rem;
+    background-color: transparent;
+    padding: 3px 3px;
+    margin-left: 18px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
 .menu-btn {
     width: 20px;
     height: 20px;

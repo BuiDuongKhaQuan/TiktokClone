@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '~/asstes/images';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -14,6 +15,14 @@ import {
     faMoon,
     faKeyboard,
     faCircleQuestion,
+    faMessage,
+    faInbox,
+    faUser,
+    faFlag,
+    faCoins,
+    faLightbulb,
+    faGear,
+    faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '~/components/AccountItem';
@@ -54,7 +63,43 @@ const MENU_ITEMS = [
     },
 ];
 
+const MENU_ITEMS_USER = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/profile',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faFlag} />,
+        title: 'Favorites',
+        to: '/favorites',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get Coins',
+        to: '/coins',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'LIVE Creator Hub',
+        to: '/live',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Settings',
+        to: '/settings',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+        title: 'Log out',
+        to: '/logout',
+        separate: true,
+    },
+];
+
 function Header() {
+    const currentUser = true;
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
@@ -98,16 +143,41 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
+
                 <div className={cx('action')}>
                     <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                         Upload
                     </Button>
-                    <Button outline>Log in</Button>
-
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('menu-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Message">
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox">
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faInbox} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button outline>Log in</Button>
+                        </>
+                    )}
+                    <Menu items={currentUser ? MENU_ITEMS_USER : MENU_ITEMS} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/504c8e671737a034ccbd3c4dc42c436d.jpeg?x-expires=1692968400&x-signature=AKsHdc0h%2BzeOJixhuv2%2F34lIOms%3D"
+                                alt="Ảnh đại diện"
+                            />
+                        ) : (
+                            <button className={cx('menu-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
