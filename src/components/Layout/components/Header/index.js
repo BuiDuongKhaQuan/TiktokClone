@@ -26,6 +26,19 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'Việt Nam',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Việt Nam',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -49,6 +62,10 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
+    };
 
     return (
         <h2 className={cx('warpper')}>
@@ -87,7 +104,7 @@ function Header() {
                     </Button>
                     <Button outline>Log in</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('menu-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>

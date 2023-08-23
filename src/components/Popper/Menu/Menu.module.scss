@@ -23,3 +23,21 @@
         background-color: rgba(22, 24, 35, 0.03);
     }
 }
+
+//header
+
+.header {
+    display: flex;
+    padding: 8px 0;
+}
+
+.back-btn {
+    flex: 1;
+    background-color: transparent;
+}
+
+.header-title {
+    flex: 2;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
