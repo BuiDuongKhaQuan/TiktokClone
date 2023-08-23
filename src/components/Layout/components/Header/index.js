@@ -5,35 +5,36 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import {
-    faMagnifyingGlass,
-    faCircleXmark,
-    faSpinner,
-    faPlus,
-    faEllipsisVertical,
-    faEarthAsia,
-    faMoon,
-    faKeyboard,
-    faCircleQuestion,
-    faMessage,
-    faInbox,
-    faUser,
-    faFlag,
-    faCoins,
-    faLightbulb,
-    faGear,
-    faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
+    CloseIcon,
+    CoinsIcon,
+    DarkModeIcon,
+    FavoritesIcon,
+    FeedbackIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LiveHubIcon,
+    LoadingIcon,
+    LogOutIcon,
+    MessageIcon,
+    PlusIcon,
+    SearchIcon,
+    SetttingIcon,
+    UserIcon,
+} from '~/components/Icons';
 import { useEffect, useState } from 'react';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon />,
         title: 'Việt Nam',
         children: {
             title: 'Language',
@@ -50,48 +51,48 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <FeedbackIcon />,
         title: 'Feedback and help',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard and shortcut',
     },
     {
-        icon: <FontAwesomeIcon icon={faMoon} />,
+        icon: <DarkModeIcon />,
         title: 'Dark mode',
     },
 ];
 
 const MENU_ITEMS_USER = [
     {
-        icon: <FontAwesomeIcon icon={faUser} />,
+        icon: <UserIcon />,
         title: 'View profile',
         to: '/profile',
     },
     {
-        icon: <FontAwesomeIcon icon={faFlag} />,
+        icon: <FavoritesIcon />,
         title: 'Favorites',
         to: '/favorites',
     },
     {
-        icon: <FontAwesomeIcon icon={faCoins} />,
+        icon: <CoinsIcon />,
         title: 'Get Coins',
         to: '/coins',
     },
     {
-        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        icon: <LiveHubIcon />,
         title: 'LIVE Creator Hub',
         to: '/live',
     },
     {
-        icon: <FontAwesomeIcon icon={faGear} />,
+        icon: <SetttingIcon />,
         title: 'Settings',
         to: '/settings',
     },
     ...MENU_ITEMS,
     {
-        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+        icon: <LogOutIcon />,
         title: 'Log out',
         to: '/logout',
         separate: true,
@@ -134,30 +135,30 @@ function Header() {
                     <div className={cx('search')}>
                         <input placeholder="Search account and videos" spellCheck={false} />
                         <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
+                            <CloseIcon width="16px" height="16px" />
                         </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                        <LoadingIcon className={cx('loading')} width="16px" height="16px" />
 
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <SearchIcon width="24px" height="24px" />
                         </button>
                     </div>
                 </Tippy>
 
                 <div className={cx('action')}>
-                    <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                    <Button upload leftIcon={<PlusIcon width="20px" height="20px" />}>
                         Upload
                     </Button>
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Message">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <MessageIcon width="26px" height="26px" />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Inbox">
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faInbox} />
+                                <button className={cx('action-btn', 'inbox-icon')}>
+                                    <InboxIcon width="32px" height="32px" />
                                 </button>
                             </Tippy>
                         </>
@@ -168,10 +169,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? MENU_ITEMS_USER : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/504c8e671737a034ccbd3c4dc42c436d.jpeg?x-expires=1692968400&x-signature=AKsHdc0h%2BzeOJixhuv2%2F34lIOms%3D"
                                 alt="Ảnh đại diện"
+                                fallBack="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/348464898_612727004250189_6267958016901660133_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=IX2ZmozJyZQAX9u5bAB&_nc_ht=scontent.fsgn5-2.fna&oh=00_AfDRJQNRcMGu7PdYx0NNWeGAVeb2D83cBPVZvAVBCJM9tg&oe=64EB431C"
                             />
                         ) : (
                             <button className={cx('menu-btn')}>
