@@ -3,11 +3,9 @@ import styles from './Header.module.scss';
 import images from '~/asstes/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import {
-    CloseIcon,
     CoinsIcon,
     DarkModeIcon,
     FavoritesIcon,
@@ -16,19 +14,16 @@ import {
     KeyboardIcon,
     LanguageIcon,
     LiveHubIcon,
-    LoadingIcon,
     LogOutIcon,
     MessageIcon,
     PlusIcon,
-    SearchIcon,
     SetttingIcon,
     UserIcon,
 } from '~/components/Icons';
-import { useEffect, useState } from 'react';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -100,14 +95,7 @@ const MENU_ITEMS_USER = [
 ];
 
 function Header() {
-    const currentUser = true;
-    const [searchResult, setSearchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
+    const currentUser = false;
 
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
@@ -117,34 +105,8 @@ function Header() {
         <h2 className={cx('warpper')}>
             <div className={cx('inner')}>
                 <img src={images.logo} alt="logo" />
-                <Tippy
-                    visible={searchResult.length > 0}
-                    interactive={true}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search account and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <CloseIcon width="16px" height="16px" />
-                        </button>
-                        <LoadingIcon className={cx('loading')} width="16px" height="16px" />
-
-                        <button className={cx('search-btn')}>
-                            <SearchIcon width="24px" height="24px" />
-                        </button>
-                    </div>
-                </Tippy>
-
+                {/* Search */}
+                <Search />
                 <div className={cx('action')}>
                     <Button upload leftIcon={<PlusIcon width="20px" height="20px" />}>
                         Upload
