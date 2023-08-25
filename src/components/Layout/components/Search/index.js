@@ -50,8 +50,16 @@ function Search() {
         setShowhResult(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
-        // Headless Tippy
+        //Using a wrapper <div> or <span> tag around the reference
+        //element solves this by creating a new parentNode context.
         <div>
             <HeadlessTippy
                 visible={showResult && searchResult.length > 0}
@@ -74,7 +82,7 @@ function Search() {
                         value={searchValue}
                         placeholder="Search account and videos"
                         spellCheck={false}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={handleChange}
                         onFocus={() => setShowhResult(true)}
                     />
                     {!!searchValue && !showLoading && (

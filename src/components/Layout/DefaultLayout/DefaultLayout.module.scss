@@ -4,6 +4,7 @@
     align-items: center;
 }
 .container {
+    margin-top: var(--dafault-layout-header-height);
     width: var(--dafault-layout-with);
     display: flex;
 }

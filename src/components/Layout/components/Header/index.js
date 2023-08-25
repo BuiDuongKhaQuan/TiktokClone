@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import {
     CoinsIcon,
     DarkModeIcon,
@@ -24,6 +25,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -95,7 +97,7 @@ const MENU_ITEMS_USER = [
 ];
 
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
 
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
@@ -104,7 +106,9 @@ function Header() {
     return (
         <h2 className={cx('warpper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="logo" />
+                <Link to={routesConfig.home} className={cx('logo')}>
+                    <img src={images.logo} alt="logo" />
+                </Link>
                 {/* Search */}
                 <Search />
                 <div className={cx('action')}>
