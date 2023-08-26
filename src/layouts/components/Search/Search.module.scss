@@ -19,6 +19,7 @@
         color: var(--black);
         font-size: 1.6rem;
         padding: 12px 0;
+        padding-right: 40px;
         caret-color: var(--primary);
         background-color: transparent;
     }
@@ -56,6 +57,7 @@
 .clear,
 .loading {
     position: absolute;
+    display: flex;
     right: calc(var(--search-button-with) + 18px);
     top: 50%;
     transform: translateY(-50%);
