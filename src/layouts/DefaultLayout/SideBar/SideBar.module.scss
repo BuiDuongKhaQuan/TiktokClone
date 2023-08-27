@@ -1,3 +1,18 @@
 .wrapper {
-    width: 356px;
+    width: 232px;
+    padding: 20px 0 26px;
+}
+.login {
+    padding: 20px 8px 24px 8px;
+    border-top: 1px solid #eeeeee;
+}
+.login-title {
+    font-size: 1.6rem;
+    color: rgba(22, 24, 35, 0.5);
+    line-height: 21px;
+    letter-spacing: 0.03px;
+}
+.login-btn {
+    margin-top: 20px;
+    width: 100%;
 }

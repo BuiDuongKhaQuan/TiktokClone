@@ -1,0 +1,53 @@
+.wrapper {
+    padding: 16px 0 16px 8px;
+    border-top: 1px solid #eeeeee;
+}
+.lable,
+.see {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+.see {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+.user-avatar {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+.info {
+    margin-left: 13px;
+}
+
+.nickname {
+    max-width: 145px;
+    color: rgb(22, 24, 35);
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+.icon-check {
+    margin-left: 3px;
+    width: 14px;
+    height: 14px;
+    color: #20d5ec;
+}
+
+.username {
+    max-width: 145px;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 400;
+    font-size: 1.2rem;
+}

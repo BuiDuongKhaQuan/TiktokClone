@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 
 import * as searchServices from '~/services/searchService';
 import AccountItem from '~/components/AccountItem';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { Popper as PopperWrapper } from '~/components/Popper';
 import { CloseIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
 

@@ -1,0 +1,63 @@
+.wrapper {
+    width: 280px;
+    padding: 10px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.inbox-btn {
+    padding: 7px 18px;
+    font-size: 1.5rem;
+}
+
+.nickname {
+    max-width: 145px;
+    color: rgb(22, 24, 35);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+}
+.icon-check {
+    width: 15px;
+    height: 15px;
+    color: #20d5ec;
+    margin-left: 5px;
+}
+
+.username {
+    max-width: 145px;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 13px;
+}
+
+.like-follwers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.number {
+    flex: 1;
+    font-weight: 700;
+    display: flex;
+}
+
+.label {
+    font-weight: 400;
+    margin-left: 8px;
+}
